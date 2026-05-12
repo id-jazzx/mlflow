@@ -54,11 +54,10 @@ declare module 'openclaw/plugin-sdk/plugin-entry' {
   export function emptyPluginConfigSchema(): OpenClawPluginConfigSchema;
 }
 
-declare module 'openclaw/plugin-sdk/diagnostics-otel' {
+declare module 'openclaw/plugin-sdk/diagnostic-runtime' {
   export type DiagnosticEventPayload = {
     type: string;
     sessionKey?: string;
-    costUsd?: number;
     context?: {
       limit?: number;
       used?: number;

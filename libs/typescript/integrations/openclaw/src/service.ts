@@ -10,7 +10,7 @@ import type { OpenClawPluginApi, OpenClawPluginService } from 'openclaw/plugin-s
 import {
   onDiagnosticEvent,
   type DiagnosticEventPayload,
-} from 'openclaw/plugin-sdk/diagnostics-otel';
+} from 'openclaw/plugin-sdk/diagnostic-runtime';
 import {
   init,
   startSpan,
@@ -827,9 +827,6 @@ export function createMLflowService(
           trace.tokenUsage.inputTokens += evt.usage.input || 0;
           trace.tokenUsage.outputTokens += evt.usage.output || 0;
           trace.tokenUsage.totalTokens += evt.usage.total || 0;
-        }
-        if (evt.costUsd != null) {
-          trace.costMeta.costUsd = (trace.costMeta.costUsd ?? 0) + evt.costUsd;
         }
         if (evt.context?.limit != null) {
           trace.costMeta.contextLimit = evt.context.limit;
